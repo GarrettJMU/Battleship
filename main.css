@@ -17,15 +17,15 @@ td  {
   text-align: center;
 }
 
-.torpedohit  {
-  background-color: maroon;
-  opacity: .7;
-}
-
 .torpedoShot  {
   background-color: #23b7d1;
   opacity: .5;
 }
+.torpedohit  {
+  background-color: maroon;
+  opacity: .7;
+}
+/*This was put below TorpedoShot because cascading order prevented this from taking precendent*/
 
 .blank  {
   background-color: white;
