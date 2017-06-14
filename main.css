@@ -1,0 +1,36 @@
+h1  {
+  text-align: center;
+}
+
+.board  {
+  width: 40em;
+  height: 40em;
+  float: none;
+  margin: 0px auto;
+}
+
+td  {
+  height: 60px;
+  width: 60px;
+  border: 2px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.torpedohit  {
+  background-color: maroon;
+  opacity: .7;
+}
+
+.torpedoShot  {
+  background-color: #23b7d1;
+  opacity: .5;
+}
+
+.blank  {
+  background-color: white;
+}
+
+.dataRow  {
+  margin-top: 3em;
+}
