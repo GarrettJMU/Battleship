@@ -18,13 +18,16 @@ $(document).ready(function() {
     for(j=0; j<10; j++){
       var col = $('<td></td>').attr('id',("col"+ counter++));
       row.append(col); //keeps all of the columns in rows
-    }
-}
+    } //ends second for loop
+} //ends first for loop
 $('#boardDiv').append(table);
 
   $("td").click(function(){
+    if($(this).hasClass("torpedoShot")==true)  {
+      $(this).click(false);
+    } else if ($(this).hasClass("torpedoShot")==false) {
     $(this).addClass("torpedoShot")
-    $(".torpedoesUsed").text(("Torpedoes Used: " + torpedoes++))
+    $(".torpedoesUsed").text(("Torpedoes Used: " + torpedoes++))}
   }) //Is the counter for torpedoes Used
 
   $(".reset").click(function(){
