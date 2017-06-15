@@ -21,6 +21,7 @@ td  {
   background-color: #23b7d1;
   opacity: .5;
 }
+
 .torpedohit  {
   background-color: maroon;
   opacity: .7;
@@ -33,4 +34,25 @@ td  {
 
 .dataRow  {
   margin-top: 3em;
+}
+
+.ship1Surround, .ship2Surround, .ship3Surround, .ship4Surround, .ship5Surround {
+  background-color: black;
+}
+
+
+.shipHere1 {
+  background-color: green;
+}
+.shipHere2 {
+  background-color: blue;
+}
+.shipHere3  {
+  background-color: grey;
+}
+.shipHere4  {
+  background-color: purple;
+}
+.shipHere5  {
+  background-color: red;
 }
