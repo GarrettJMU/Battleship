@@ -35,7 +35,7 @@ function winLose()  {
     $("p").text("Congrats you win!!")
     game = false; //Game is over and we want to break out of the if loop that this function is called in later
   } else if (torpedoes > 25 && ($('.torpedohit').length < 24)) {
-    $(".torpedoesUsed").text("I'm sorry you lose!!")
+    $(".torpedoesUsed").text("You lose!!")
     $(".shipHere1, .shipHere2, .shipHere3, .shipHere4, .shipHere5, .shipHere6, .shipHere7, .shipHere8" ).addClass("torpedohit") //Shows the location of all ships if the player loses
     game = false; //Game is over and we want to break out of the if loop that this function is called in later
   }

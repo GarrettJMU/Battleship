@@ -1,5 +1,12 @@
+body {
+  /*background-color: #d3d3d3;*/
+  background-image: url("battleship.jpg");
+  background-repeat: no-repeat;
+}
+
 h1  {
   text-align: center;
+  margin-top: 0.75em;
 }
 
 .board  {
@@ -7,6 +14,11 @@ h1  {
   height: 40em;
   float: none;
   margin: 0px auto;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.col-sm-12 {
+  text-align: center;
 }
 
 td  {
@@ -19,6 +31,9 @@ td  {
   opacity: .5;
 }
 
+div.row.dataRow {
+  margin-top: 1em;
+}
 .torpedoShot  {
   background-color: grey;
   opacity: .5;
@@ -30,10 +45,16 @@ td  {
 }
 /*This was put below TorpedoShot because cascading order prevented this from taking precendent*/
 
-.blank  {
-  background-color: white;
-}
-
 .dataRow  {
   margin-top: 3em;
+}
+
+.torpedoesUsed, .shipsRemaining {
+  color: #d3d3d3;
+  opacity: .5;
+}
+input {
+  color: #d3d3d3;
+  opacity: .5;
+  color: black;
 }

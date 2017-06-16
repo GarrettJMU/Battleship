@@ -6,11 +6,11 @@
     src="http://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <title>Battleship</title>
+    <link rel="stylesheet" href="main.css">
     <script type="text/javascript" src="battleship.js">
     </script>
   </head>
@@ -25,12 +25,12 @@
     </div> <!-- closes column div -->
   </div> <!-- closes row div -->
   <div class="row dataRow">
-    <div class="col-sm-6">
-      <input type="button" value="Restart" onClick="window.location.reload()">
-    </div>
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <p class="torpedoesUsed">Torpedoes Left: 25</p>
       <p class="shipsRemaining">Ships Remaining: 8</p>
+    </div>
+    <div class="col-sm-12">
+      <input type="button" value="Restart" onClick="window.location.reload()">
     </div>
   </div>
 </div> <!-- closes container div -->
