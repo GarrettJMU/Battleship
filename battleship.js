@@ -2,14 +2,23 @@ var game = true;
 var counter = 0;
 var torpedoes = 1;
 var shipsRemaining = 8;
-//Loop through numbers and mod out the rest?
+
 var ship1Accept =           [0,1,2,3,4,5,10,11,12,13,14,15,20,21,22,23,24,25,30,31,32,33,34,35,40,41,42,43,44,45,50,51,52,53,54,55,60,61,62,63,64,65,70,71,72,73,74,75,80,81,82,83,84,85,90,91,92,93,94,95]
-  var ship2Accept = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69]
-  var ship3Accept = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79]
+  var ship2Accept = []
+    for(var c=0; c <70; c+=1) {
+      ship2Accept.push(c)
+    }
+  var ship3Accept = []
+    for(var b=0; b <80; b+=1) {
+      ship3Accept.push(b)
+    }
   var ship4Accept = [0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,40,41,42,43,44,45,46,47,48,50,51,52,53,54,55,56,57,58,60,61,62,63,64,65,66,67,68,70,71,72,73,74,75,76,77,78,80,81,82,83,84,85,86,87,88,90,91,92,93,94,95,96,97,98]
   var ship6Accept = [0,1,2,3,4,5,6,10,11,12,13,14,15,16,20,21,22,23,24,25,26,30,31,32,33,34,35,36,40,41,42,43,44,45,46,50,51,52,53,54,55,56,60,61,62,63,64,65,66,70,71,72,73,74,75,76,80,81,82,83,84,85,86,90,91,92,93,94,95,96]
   var ship7Accept = [0,1,2,3,4,5,6,7,10,11,12,13,14,15,16,17,20,21,22,23,24,25,26,27,30,31,32,33,34,35,36,37,40,41,42,43,44,45,46,47,50,51,52,53,54,55,56,57,60,61,62,63,64,65,66,67,70,71,72,73,74,75,76,77,80,81,82,83,84,85,86,87,90,91,92,93,94,95,96,97]
-  var ship8Accept = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89]
+  var ship8Accept = []
+    for(var a=0; a <90; a+=1) {
+      ship8Accept.push(a)
+    }
 
 // This creates 5 random points on the board. Will include a loop (or something of the sort) to ensure that there are no duplicates.
 var ship1 = ship1Accept[(Math.floor(Math.random()*ship1Accept.length))]
@@ -32,81 +41,63 @@ function winLose()  {
   }
 }
 
-
 function shipsLeft()  {
-  while (($('.shipHere1.torpedohit').length === 5)) {
-    shipsRemaining= shipsRemaining-1
-    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
-    ($('.shipHere1.torpedohit').length)+1;
-    break;
-  }
-  while (($('.shipHere2.torpedohit').length === 4)) {
-    shipsRemaining= shipsRemaining-1
-    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
-    ($('.shipHere2.torpedohit').length)+1;
-    break;
-  }
-  while (($('.shipHere3.torpedohit').length === 3)) {
-    shipsRemaining= shipsRemaining-1
-    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
-    ($('.shipHere3.torpedohit').length)+1;
-    break;
-  }
-  while (($('.shipHere4.torpedohit').length === 2)) {
-    shipsRemaining= shipsRemaining-1
-    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
-    ($('.shipHere4.torpedohit').length)+1;
-    break;
-  }
-  while (($('.shipHere5.torpedohit').length === 1)) {
-    shipsRemaining= shipsRemaining-1
-    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
-    ($('.shipHere5.torpedohit').length)+1;
-    break;
-  }
-  while (($('.shipHere6.torpedohit').length === 4)) {
-    shipsRemaining= shipsRemaining-1
-    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
-    ($('.shipHere6.torpedohit').length)+1;
-    break;
-  }
-  while (($('.shipHere7.torpedohit').length === 3)) {
-    shipsRemaining= shipsRemaining-1
-    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
-    ($('.shipHere7.torpedohit').length)+1;
-    break;
-  }
-  while (($('.shipHere8.torpedohit').length === 2)) {
-    shipsRemaining= shipsRemaining-1
-    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
-    ($('.shipHere8.torpedohit').length)+1;
-    break;
-  }
-
-    // if (($('.shipHere1.torpedohit').length === 5)){
-    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
-    // }
-    // if ($('.shipHere2.torpedohit').length === 4){
-    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
-    // }
-    // if ($('.shipHere3.torpedohit').length === 3){
-    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
-    // }
-    // if ($('.shipHere4.torpedohit').length === 2){
-    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
-    // }
-    // if ($('.shipHere5.torpedohit').length === 1){
-    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
-    // }
-    // if ($('.shipHere6.torpedohit').length === 4){
-    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
-    // }
-    // if ($('.shipHere7.torpedohit').length === 3){
-    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
-    // }
-    // if ($('.shipHere8.torpedohit').length === 2){
-    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
-    // }
+    if (($('.shipHere1.torpedohit').length === 5)){
+      if (!$('.shipHere1.torpedohit').hasClass(".shipSunk")) {
+        shipsRemaining--;
+        $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)))
+        $('.shipHere1.torpedohit').addClass(".shipSunk")
+    }
+    }
+    if ($('.shipHere2.torpedohit').length === 4){
+      if (!$('.shipHere2.torpedohit').hasClass(".shipSunk")) {
+        shipsRemaining--;
+        $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)))
+        $('.shipHere2.torpedohit').addClass(".shipSunk")
+    }
+    }
+    if ($('.shipHere3.torpedohit').length === 3){
+      if (!$('.shipHere3.torpedohit').hasClass(".shipSunk")) {
+        shipsRemaining--;
+        $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)))
+        $('.shipHere3.torpedohit').addClass(".shipSunk")
+    }
+    }
+    if ($('.shipHere4.torpedohit').length === 2){
+      if (!$('.shipHere4.torpedohit').hasClass(".shipSunk")) {
+        shipsRemaining--;
+        $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)))
+        $('.shipHere4.torpedohit').addClass(".shipSunk")
+    }
+    }
+    if ($('.shipHere5.torpedohit').length === 1){
+      if (!$('.shipHere5.torpedohit').hasClass(".shipSunk")) {
+        shipsRemaining--;
+        $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)))
+        $('.shipHere5.torpedohit').addClass(".shipSunk")
+    }
+    }
+    if ($('.shipHere6.torpedohit').length === 4){
+      if (!$('.shipHere6.torpedohit').hasClass(".shipSunk")) {
+        shipsRemaining--;
+        $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)))
+        $('.shipHere6.torpedohit').addClass(".shipSunk")
+    }
+    }
+    if ($('.shipHere7.torpedohit').length === 3){
+      if (!$('.shipHere7.torpedohit').hasClass(".shipSunk")) {
+        shipsRemaining--;
+        $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)))
+        $('.shipHere7.torpedohit').addClass(".shipSunk")
+    }
+    }
+    if ($('.shipHere8.torpedohit').length === 2){
+      if (!$('.shipHere8.torpedohit').hasClass(".shipSunk")) {
+        shipsRemaining--;
+        $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)))
+        $('.shipHere8.torpedohit').addClass(".shipSunk")
+    }
+    }
 }
 
 //This setups all of the lengths of the ships
@@ -354,8 +345,8 @@ ship8Surround();
       if($(this).is(".shipHere1, .shipHere2, .shipHere3, .shipHere4, .shipHere5, .shipHere6, .shipHere7, .shipHere8")) {
         $(this).addClass("torpedohit")
         $(this).click(false);
-        shipsLeft();
       }
+      shipsLeft();
       winLose();
     }
   }) //Is the counter for torpedoes Used
