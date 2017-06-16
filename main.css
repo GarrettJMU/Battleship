@@ -15,10 +15,12 @@ td  {
   border: 2px solid black;
   border-collapse: collapse;
   text-align: center;
+  background-color: #23b7d1;
+  opacity: .5;
 }
 
 .torpedoShot  {
-  background-color: #23b7d1;
+  background-color: grey;
   opacity: .5;
 }
 
@@ -34,25 +36,4 @@ td  {
 
 .dataRow  {
   margin-top: 3em;
-}
-
-.ship1Surround, .ship2Surround, .ship3Surround, .ship4Surround, .ship5Surround {
-  background-color: black;
-}
-
-
-.shipHere1 {
-  background-color: green;
-}
-.shipHere2 {
-  background-color: blue;
-}
-.shipHere3  {
-  background-color: grey;
-}
-.shipHere4  {
-  background-color: purple;
-}
-.shipHere5  {
-  background-color: red;
 }

@@ -1,34 +1,117 @@
 var game = true;
 var counter = 0;
 var torpedoes = 1;
-var ship1Full = []
-var ship1Accept =           [0,1,2,3,4,5,10,11,12,13,14,15,20,21,22,23,24,25,30,31,32,33,34,35,40,41,42,43,44,45,50,51,52,53,54,55,60,61,62,63,64,  65,70,71,72,73,74,75,80,81,82,83,84,85,90,91,92,93,94,95]
+var shipsRemaining = 8;
+//Loop through numbers and mod out the rest?
+var ship1Accept =           [0,1,2,3,4,5,10,11,12,13,14,15,20,21,22,23,24,25,30,31,32,33,34,35,40,41,42,43,44,45,50,51,52,53,54,55,60,61,62,63,64,65,70,71,72,73,74,75,80,81,82,83,84,85,90,91,92,93,94,95]
   var ship2Accept = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69]
   var ship3Accept = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79]
   var ship4Accept = [0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,40,41,42,43,44,45,46,47,48,50,51,52,53,54,55,56,57,58,60,61,62,63,64,65,66,67,68,70,71,72,73,74,75,76,77,78,80,81,82,83,84,85,86,87,88,90,91,92,93,94,95,96,97,98]
+  var ship6Accept = [0,1,2,3,4,5,6,10,11,12,13,14,15,16,20,21,22,23,24,25,26,30,31,32,33,34,35,36,40,41,42,43,44,45,46,50,51,52,53,54,55,56,60,61,62,63,64,65,66,70,71,72,73,74,75,76,80,81,82,83,84,85,86,90,91,92,93,94,95,96]
+  var ship7Accept = [0,1,2,3,4,5,6,7,10,11,12,13,14,15,16,17,20,21,22,23,24,25,26,27,30,31,32,33,34,35,36,37,40,41,42,43,44,45,46,47,50,51,52,53,54,55,56,57,60,61,62,63,64,65,66,67,70,71,72,73,74,75,76,77,80,81,82,83,84,85,86,87,90,91,92,93,94,95,96,97]
+  var ship8Accept = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89]
+
 // This creates 5 random points on the board. Will include a loop (or something of the sort) to ensure that there are no duplicates.
 var ship1 = ship1Accept[(Math.floor(Math.random()*ship1Accept.length))]
 var ship2 = ship2Accept[(Math.floor(Math.random()*ship2Accept.length))]
 var ship3 = ship3Accept[(Math.floor(Math.random()*ship3Accept.length))]
 var ship4 = ship4Accept[(Math.floor(Math.random()*ship4Accept.length))]
 var ship5 = (Math.floor(Math.random()*100))
-console.log(ship1) //This just shows what the ships are (for Garrett since he's a cheater)
-console.log(ship2)
-console.log(ship3)
-console.log(ship4)
-console.log(ship5)
+var ship6 = ship6Accept[(Math.floor(Math.random()*ship6Accept.length))]
+var ship7 = ship7Accept[(Math.floor(Math.random()*ship7Accept.length))]
+var ship8 = ship8Accept[(Math.floor(Math.random()*ship8Accept.length))]
 
 function winLose()  {
-  if (torpedoes <=25 && ($('.torpedohit').length === 15)) {
+  if (torpedoes <=25 && ($('.torpedohit').length === 24)) {
     $("p").text("Congrats you win!!")
     game = false; //Game is over and we want to break out of the if loop that this function is called in later
-  } else if (torpedoes > 25 && ($('.torpedohit').length < 15)) {
-    $("p").text("I'm sorry you lose!!")
-    $(".shipHere1 .shipHere2 .shipHere3 .shipHere4 .shipHere5" ).addClass("torpedohit") //Shows the location of all ships if the player loses
+  } else if (torpedoes > 25 && ($('.torpedohit').length < 24)) {
+    $(".torpedoesUsed").text("I'm sorry you lose!!")
+    $(".shipHere1, .shipHere2, .shipHere3, .shipHere4, .shipHere5, .shipHere6, .shipHere7, .shipHere8" ).addClass("torpedohit") //Shows the location of all ships if the player loses
     game = false; //Game is over and we want to break out of the if loop that this function is called in later
   }
 }
+
+
+function shipsLeft()  {
+  while (($('.shipHere1.torpedohit').length === 5)) {
+    shipsRemaining= shipsRemaining-1
+    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
+    ($('.shipHere1.torpedohit').length)+1;
+    break;
+  }
+  while (($('.shipHere2.torpedohit').length === 4)) {
+    shipsRemaining= shipsRemaining-1
+    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
+    ($('.shipHere2.torpedohit').length)+1;
+    break;
+  }
+  while (($('.shipHere3.torpedohit').length === 3)) {
+    shipsRemaining= shipsRemaining-1
+    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
+    ($('.shipHere3.torpedohit').length)+1;
+    break;
+  }
+  while (($('.shipHere4.torpedohit').length === 2)) {
+    shipsRemaining= shipsRemaining-1
+    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
+    ($('.shipHere4.torpedohit').length)+1;
+    break;
+  }
+  while (($('.shipHere5.torpedohit').length === 1)) {
+    shipsRemaining= shipsRemaining-1
+    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
+    ($('.shipHere5.torpedohit').length)+1;
+    break;
+  }
+  while (($('.shipHere6.torpedohit').length === 4)) {
+    shipsRemaining= shipsRemaining-1
+    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
+    ($('.shipHere6.torpedohit').length)+1;
+    break;
+  }
+  while (($('.shipHere7.torpedohit').length === 3)) {
+    shipsRemaining= shipsRemaining-1
+    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
+    ($('.shipHere7.torpedohit').length)+1;
+    break;
+  }
+  while (($('.shipHere8.torpedohit').length === 2)) {
+    shipsRemaining= shipsRemaining-1
+    $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining)));
+    ($('.shipHere8.torpedohit').length)+1;
+    break;
+  }
+
+    // if (($('.shipHere1.torpedohit').length === 5)){
+    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
+    // }
+    // if ($('.shipHere2.torpedohit').length === 4){
+    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
+    // }
+    // if ($('.shipHere3.torpedohit').length === 3){
+    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
+    // }
+    // if ($('.shipHere4.torpedohit').length === 2){
+    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
+    // }
+    // if ($('.shipHere5.torpedohit').length === 1){
+    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
+    // }
+    // if ($('.shipHere6.torpedohit').length === 4){
+    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
+    // }
+    // if ($('.shipHere7.torpedohit').length === 3){
+    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
+    // }
+    // if ($('.shipHere8.torpedohit').length === 2){
+    //   $(".shipsRemaining").text(("Ships Remaining: " + (shipsRemaining-1)))
+    // }
+}
+
+//This setups all of the lengths of the ships
 function ship1Setup() {
+   ship1 = ship1Accept[(Math.floor(Math.random()*ship1Accept.length))]
    $("#col" + ship1).addClass("shipHere1"),$("#col" + (ship1+1)).addClass("shipHere1"),$("#col" + (ship1+2)).addClass("shipHere1"),$("#col" + (ship1+3)).addClass("shipHere1"),$("#col" + (ship1+4)).addClass("shipHere1");
 }
 function ship2Setup() {
@@ -47,32 +130,61 @@ function ship5Setup() {
   ship5 = (Math.floor(Math.random()*100))
   $("#col" + ship5).addClass("shipHere5");
 }
+function ship6Setup() {
+  ship6 = ship6Accept[(Math.floor(Math.random()*ship6Accept.length))]
+  $("#col" + ship6).addClass("shipHere6"),$("#col" + (ship6+1)).addClass("shipHere6"),$("#col" + (ship6+2)).addClass("shipHere6"),$("#col" + (ship6+3)).addClass("shipHere6");
+}
+function ship7Setup() {
+  ship7 = ship7Accept[(Math.floor(Math.random()*ship7Accept.length))]
+  $("#col" + ship7).addClass("shipHere7"),$("#col" + (ship7+1)).addClass("shipHere7"),$("#col" + (ship7+2)).addClass("shipHere7");
+}
+function ship8Setup() {
+  ship8 = ship8Accept[(Math.floor(Math.random()*ship8Accept.length))]
+  $("#col" + ship8).addClass("shipHere8");$("#col" + (ship8+10)).addClass("shipHere8");
+}
 
+// These check all of our ships to ensure that they aren't bumping
 function checkShip2() {
-    while ($(".shipHere2").hasClass("shipHere1 shipHere3 shipHere4 shipHere5 ship1Surround")) {
+    while ($(".shipHere2").is(".shipHere1, .ship1Surround")) {
       $("td").removeClass("shipHere2");
       ship2Setup();
     }
   }
 function checkShip3() {
-    while ($(".shipHere3").hasClass("shipHere1 shipHere2"))  {
+    while ($(".shipHere3").is(".shipHere1, .ship1Surround, .shipHere2, .ship2Surround"))  {
       $("td").removeClass("shipHere3");
       ship3Setup();
     }
   }
 function checkShip4() {
-    while ($(".shipHere4").hasClass("shipHere1 shipHere2 shipHere3"))  {
+    while ($(".shipHere4").is(".shipHere1, .ship1Surround, .shipHere2, .ship2Surround, .shipHere3, .ship3Surround"))  {
       $("td").removeClass("shipHere4");
       ship4Setup();
     }
   }
 function checkShip5() {
-    while ($(".shipHere5").hasClass("shipHere1 shipHere2 shipHere3 shipHere4"))  {
+    while ($(".shipHere5").is(".shipHere1, .ship1Surround, .shipHere2, .ship2Surround, .shipHere3, .ship3Surround, .shipHere4, .ship4Surround"))  {
       $("td").removeClass("shipHere5");
       ship5Setup();
     }
   }
+function checkShip6() {
+  while ($(".shipHere6").is(".shipHere1, .ship1Surround, .shipHere2, .ship2Surround, .shipHere3, .ship3Surround, .shipHere4, .ship4Surround, .shipHere5, .ship5Surround"))  {
+    $("td").removeClass("shipHere6");
+    ship6Setup();
+}}
+function checkShip7() {
+  while ($(".shipHere7").is(".shipHere1, .ship1Surround, .shipHere2, .ship2Surround, .shipHere3, .ship3Surround, .shipHere4, .ship4Surround, .shipHere5, .ship5Surround, .shipHere6, .ship6Surround"))  {
+    $("td").removeClass("shipHere7");
+    ship7Setup();
+}}
+function checkShip8() {
+  while ($(".shipHere8").is(".shipHere1, .ship1Surround, .shipHere2, .ship2Surround, .shipHere3, .ship3Surround, .shipHere4, .ship4Surround, .shipHere5, .ship5Surround, .shipHere6, .ship6Surround, .shipHere7, .ship7Surround"))  {
+    $("td").removeClass("shipHere8");
+    ship8Setup();
+}}
 
+// This creates a class around all of our ships to prevent them from touching
 function ship1Surround()  {
   $("#col" + (ship1+10)).addClass("ship1Surround")
   $("#col" + (ship1-10)).addClass("ship1Surround")
@@ -143,8 +255,50 @@ function ship5Surround()  {
   $("#col" + (ship5+9)).addClass("ship5Surround")
   $("#col" + (ship5-9)).addClass("ship5Surround")
 }
+function ship6Surround()  {
+  $("#col" + (ship6+10)).addClass("ship6Surround")
+  $("#col" + (ship6-10)).addClass("ship6Surround")
+  $("#col" + (ship6-1)).addClass("ship6Surround")
+  $("#col" + (ship6-11)).addClass("ship6Surround")
+  $("#col" + (ship6+9)).addClass("ship6Surround")
+  $("#col" + ((ship6+1)+10)).addClass("ship6Surround")
+  $("#col" + ((ship6+1)-10)).addClass("ship6Surround")
+  $("#col" + ((ship6+2)+10)).addClass("ship6Surround")
+  $("#col" + ((ship6+2)-10)).addClass("ship6Surround")
+  $("#col" + ((ship6+3)+10)).addClass("ship6Surround")
+  $("#col" + ((ship6+3)-10)).addClass("ship6Surround")
+  $("#col" + ((ship6+3)+1)).addClass("ship6Surround")
+  $("#col" + ((ship6+3)+11)).addClass("ship6Surround")
+  $("#col" + ((ship6+3)-9)).addClass("ship6Surround")
+}
+function ship7Surround()  {
+  $("#col" + (ship7+10)).addClass("ship7Surround")
+  $("#col" + (ship7-10)).addClass("ship7Surround")
+  $("#col" + (ship7-1)).addClass("ship7Surround")
+  $("#col" + (ship7-11)).addClass("ship7Surround")
+  $("#col" + (ship7+9)).addClass("ship7Surround")
+  $("#col" + ((ship7+1)+10)).addClass("ship7Surround")
+  $("#col" + ((ship7+1)-10)).addClass("ship7Surround")
+  $("#col" + ((ship7+2)+10)).addClass("ship7Surround")
+  $("#col" + ((ship7+2)-10)).addClass("ship7Surround")
+  $("#col" + ((ship7+2)+1)).addClass("ship7Surround")
+  $("#col" + ((ship7+2)+11)).addClass("ship7Surround")
+  $("#col" + ((ship7+2)-9)).addClass("ship7Surround")
+}
+function ship8Surround()  {
+  $("#col" + (ship8-10)).addClass("ship8Surround")
+  $("#col" + (ship8-1)).addClass("ship8Surround")
+  $("#col" + (ship8+1)).addClass("ship8Surround")
+  $("#col" + (ship8-11)).addClass("ship8Surround")
+  $("#col" + (ship8-9)).addClass("ship8Surround")
+  $("#col" + ((ship8+10)+1)).addClass("ship8Surround")
+  $("#col" + ((ship8+10)-1)).addClass("ship8Surround")
+  $("#col" + ((ship8+10)+10)).addClass("ship8Surround")
+  $("#col" + ((ship8+10)+11)).addClass("ship8Surround")
+  $("#col" + ((ship8+10)+9)).addClass("ship8Surround")
+}
 
-
+//Creates the rows and then appends the table
 $(document).ready(function() {
   var table = $('<table></table>').addClass("board"); //selects the table element in our html
   for(i=0; i<10; i++){ //inside the table, generate the first
@@ -155,27 +309,39 @@ $(document).ready(function() {
       row.append(col); //keeps all of the columns in rows
     } //ends second for loop
 } //ends first for loop
-$('#boardDiv').append(table); //Creates the table
+$('#boardDiv').append(table);
 
-  // This creates a horizontal ship of 5 consecutive blocks by adding 1 more to each class
-  ship1Setup();
-  ship1Surround();
-  //Four-block ship, but made vertical by adding 10 more to each consecutive block
-  ship2Setup();
-  checkShip2();
-  ship2Surround();
-  //Three-block vertical ship
-  ship3Setup();
-  checkShip3();
-  ship3Surround();
-  //Two-block horizontal ship
-  ship4Setup();
-  checkShip4();
-  ship4Surround();
-  //Single-block ship
-  ship5Setup();
-  checkShip5();
-  ship5Surround();
+// This creates a horizontal ship of 5 consecutive blocks by adding 1 more to each class
+ship1Setup();
+ship1Surround();
+//Four-block ship, but made vertical by adding 10 more to each consecutive block
+ship2Setup();
+checkShip2();
+ship2Surround();
+//Three-block vertical ship
+ship3Setup();
+checkShip3();
+ship3Surround();
+//Two-block horizontal ship
+ship4Setup();
+checkShip4();
+ship4Surround();
+//Single-block ship
+ship5Setup();
+checkShip5();
+ship5Surround();
+//Four-block ship, but made horizontal by adding 1 more to each consecutive block
+ship6Setup();
+checkShip6();
+ship6Surround();
+//Three-block ship, but made horizontal by adding 1 more to each consecutive block
+ship7Setup();
+checkShip7();
+ship7Surround();
+//Two-block ship, but made vertical by adding 10 more to the other block
+ship8Setup();
+checkShip8();
+ship8Surround();
 
   $("td").click(function(){
     if (game) { //Put this here so that the game stops when it's over. The game variable becomes false in winLose function, which is called last in this code block
@@ -185,9 +351,10 @@ $('#boardDiv').append(table); //Creates the table
           $(this).addClass("torpedoShot")
           $(".torpedoesUsed").text(("Torpedoes Left: " + (25-torpedoes++)))
       } // this is the if/then statement to prevent double clicks
-      if($(this).hasClass("shipHere1 shipHere2 shipHere3 shipHere4 shipHere5")) {
+      if($(this).is(".shipHere1, .shipHere2, .shipHere3, .shipHere4, .shipHere5, .shipHere6, .shipHere7, .shipHere8")) {
         $(this).addClass("torpedohit")
-        $(this).click(false); //This might not be needed
+        $(this).click(false);
+        shipsLeft();
       }
       winLose();
     }
